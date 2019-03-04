@@ -1,0 +1,11 @@
+# Use PCH for internal sound card or G10 for Geek Out
+pcm.!default {
+    type hw
+    card G10
+}
+
+ctl.!default {
+    type hw
+    card G10
+}
+
