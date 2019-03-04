@@ -1,0 +1,131 @@
+
+" /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing archlinux.vim since it alters the value of the
+" 'compatible' option.
+
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages.
+runtime! archlinux.vim
+
+" If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
+" Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
+" and configure vim to your own liking!
+
+" do not load defaults if ~/.vimrc is missing
+" let skip_defaults_vim=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set vb t_vb=                     " No beeping bell no visualbell
+set ruler                        " Always show current position
+set number                       " Always show line numbers
+set hidden                       " Allow buffers to be hidden
+set wildmenu                     " Navigate through completion list
+set wildmode=longest:list,full   " Better tab completion
+
+" Prefix for mappings
+let mapleader = "-"
+let maplocalleader = ","
+nmap <leader>l :bnext<cr>
+nmap <leader>h :bprevious<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a                      " Mouse support
+set tabstop=4                    " The width of a TAB is set to 4.
+                                 " Still it is a \t. It is just that
+                                 " Vim will interpret it to be having
+                                 " a width of 4.
+set shiftwidth=4                 " Indents will have a width of 4
+set softtabstop=4                " Sets the number of columns for a TAB
+set expandtab                    " Expand TABs to spaces
+
+set ai                           " Auto indent
+set si                           " Smart indent
+set wrap                         " Wrap lines
+set lbr                          " linebreak
+set nolist
+set textwidth=0
+set wrapmargin=0
+
+set hlsearch                     " Highlight search matches
+set incsearch                    " Incremental search with highlighting
+set ignorecase                   " Ignore case when searching
+set smartcase                    " If a pattern contains an uppercase letter, 
+                                 " it is case sensitive.
+set autoread                     " refresh file when changed from outside
+
+" Paste with correct indentation
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+" netrw: settings for vim's own file explorer
+let g:netrw_liststyle = 3          " Tune liststyle
+let g:netrw_banner = 0           " Removes bloated banner
+let g:netrw_winsize = 13         " Set default width
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ale (syntax checker)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
+let g:ale_lint_on_enter = 0     " Don't run on opening a file
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_linters = {
+\   'c': ['clangtidy'],
+\   'cpp': ['clangtidy'],
+\   'python': ['pylint'],
+\}
+let g:ale_c_clangtidy_options = '-std=c11'
+let g:ale_cpp_clangtidy_options = '-std=c++17'
+" let g:ale_cpp_clang_options = '-std=c++17 -Wall'
+" let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vimtex (LaTeX)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let &rtp  = '~/.vim/bundle/vimtex,'.&rtp
+"let &rtp .= ',~/.vim/bundle/vimtex/after'
+"" Set okular as default pdf viewer for LaTeX
+"let g:vimtex_view_general_viewer = 'okular'
+"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+"let g:vimtex_view_general_options_latexmk = '--unique'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => completor (Tab-completion)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use Tab to select completion
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+" Clang path 
+"let g:completor_clang_binary = '/usr/lib/ccache/bin/clang'
+"let g:completor_python_binary = '/usr/bin/python'
+
+" vim-airline
+set noshowmode                    " Let airline do the work
+let g:airline#extensions#tabline#enabled = 1
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+" let g:airline_powerline_fonts = 1
+let g:airline_theme="papercolor"
+
+" Set color for ColorColumn
+highlight Pmenu ctermbg=8 gui=bold
+syntax enable                     " Enable syntax highlighting
+syntax sync minlines=200          " Highlight from an amount backwards
+
+" Fix the difficult-to-read default setting for diff text highlighting.  The
+" bang (!) is required since we are overwriting the DiffText setting. The highlighting
+" for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
+highlight! link DiffText ToDo
+hi DiffChange ctermfg=red
+
+filetype plugin on                " enable file type detection
+filetype indent plugin on 
