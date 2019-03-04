@@ -1,0 +1,21 @@
+! Make X look good/readable under hidpi
+Xft.dpi: 144
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+! ROFI Color theme with transparency
+! User: Rasi
+rofi.color-enabled: true
+rofi.color-window: argb:ee002b37, #002b37, #003642
+rofi.color-normal: #002b37, #819396, #003643, #008ed4, #ffffff
+rofi.color-active: #002b37, #008ed4, #003643, #008ed4, #66c6ff
+rofi.color-urgent: #002b37, #da4281, #003643, #008ed4, #890661
+
+rofi.font: DejaVu Sans Mono 18
+rofi.width: 2560
+rofi.padding: 470
+rofi.terminal: termite
