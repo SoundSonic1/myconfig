@@ -1,0 +1,21 @@
+#!/bin/bash
+# script for changing theme to Numix
+
+### changes xfce4-terminal color scheme ###
+#sed -i '31s/.*/ColorForeground=#000000/' ~/.config/xfce4/terminal/terminalrc
+#sed -i '32s/.*/ColorBackground=#ffffff/' ~/.config/xfce4/terminal/terminalrc
+#sed -i '33s/.*/ColorPalette=rgb(0,0,0);rgb(170,0,0);rgb(0,170,0);rgb(170,85,0);rgb(0,0,170);rgb(170,0,170);rgb(0,170,170);rgb(170,170,170);rgb(85,85,85);rgb(255,85,85);rgb(109,197,22);rgb(237,212,0);rgb(85,85,255);rgb(255,85,255);rgb(82,209,208);rgb(255,255,255)/' ~/.config/xfce4/terminal/terminalrc
+#sed -i '34s/.*/ColorCursor=#00AA00/' ~/.config/xfce4/terminal/terminalrc
+
+### termite color scheme change
+cp $HOME/.config/termite/.configlight $HOME/.config/termite/config
+
+### vim-airline
+sed -i -e 's/papercolor/peaksea/g' ~/.vimrc
+
+### changes gtk-2 ###
+sed -i '6s/.*/gtk-icon-theme-name="Numix"/' ~/.gtkrc-2.0
+sed -i '5s/.*/gtk-theme-name="Numix"/' ~/.gtkrc-2.0
+### changes gtk-3 ###
+sed -i '2s/.*/gtk-icon-theme-name=Numix/' ~/.config/gtk-3.0/settings.ini
+sed -i '3s/.*/gtk-theme-name=Numix/' ~/.config/gtk-3.0/settings.ini

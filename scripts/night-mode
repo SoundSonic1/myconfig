@@ -1,0 +1,22 @@
+#!/bin/bash
+# script for changing theme to Arc-Dark
+
+### changes xfce4-terminal color scheme ###
+#sed -i '31s/.*/ColorForeground=#e0e0e0/' ~/.config/xfce4/terminal/terminalrc
+#sed -i '32s/.*/ColorBackground=#2C3E50/' ~/.config/xfce4/terminal/terminalrc
+#sed -i '33s/.*/ColorPalette=#2C3E50;#E74C3C;#2ECC71;#F1C40F;#3498DB;#9B59B6;#1ABC9C;#e0e0e0;#95A5A6;#E74C3C;#2ECC71;#F1C40F;#3498DB;#9B59B6;#1ABC9C;#ECF0F1/' ~/.config/xfce4/terminal/terminalrc
+#sed -i '34s/.*/ColorCursor=#00AA00/' ~/.config/xfce4/terminal/terminalrc
+
+### termite color scheme change
+cp $HOME/.config/termite/.configdark $HOME/.config/termite/config
+
+### vim-airline
+sed -i -e 's/peaksea/papercolor/g' ~/.vimrc
+
+### changes gtk-2 ###
+sed -i '6s/.*/gtk-icon-theme-name="Arc"/' ~/.gtkrc-2.0
+sed -i '5s/.*/gtk-theme-name="Arc-Dark"/' ~/.gtkrc-2.0
+
+### changes gtk-3 ###
+sed -i '2s/.*/gtk-icon-theme-name=Arc/' ~/.config/gtk-3.0/settings.ini
+sed -i '3s/.*/gtk-theme-name=Arc-Dark/' ~/.config/gtk-3.0/settings.ini
