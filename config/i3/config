@@ -202,3 +202,7 @@ bindsym $mod+x exec chromium
 bindsym $mod+c exec chromium --incognito
 # turn off and lock the screen
 bindsym $mod+b exec xflock4
+
+# make emulator window floating
+
+for_window [title=".*Emulator.*"] floating enable
