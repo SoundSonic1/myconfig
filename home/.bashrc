@@ -47,3 +47,5 @@ alias taurus='ssh -Y s0421427@taurus.hrsk.tu-dresden.de'
 alias taurus2='ssh -t s0421427@login.zih.tu-dresden.de ssh taurus.hrsk.tu-dresden.de'
 alias mathscript='MathKernel -noprompt -run <'
 alias cmus='cmus && feh --bg-fill --randomize ~/Pictures/Wallpapers/*'
+alias externalmonitor='xrandr --output eDP --off --output DisplayPort-0 --mode 2560x1440 --rate 74.78 && sleep 2 && nitrogen --restore'
+
