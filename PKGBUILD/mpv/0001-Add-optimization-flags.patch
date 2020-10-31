@@ -1,0 +1,25 @@
+From f84f1171bca9c04227688adb34930c40a2b75c43 Mon Sep 17 00:00:00 2001
+From: Kien Dang <kien.dang_tran@tu-dresden.de>
+Date: Sat, 31 Oct 2020 16:08:22 +0100
+Subject: [PATCH] Add optimization flags
+
+---
+ wscript | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/wscript b/wscript
+index d47133e6a6..1427a9d2be 100644
+--- a/wscript
++++ b/wscript
+@@ -1093,6 +1093,8 @@ def configure(ctx):
+         # of exported symbols via mpv.def.
+         ctx.env.LINKFLAGS += ['-rdynamic']
+ 
++    ctx.env.CFLAGS += ['-march=native', '-O3']
++    ctx.env.CXXFLAGS += ['-march=native', '-03']
+     ctx.store_dependencies_lists()
+ 
+ def __write_version__(ctx):
+-- 
+2.28.0
+
