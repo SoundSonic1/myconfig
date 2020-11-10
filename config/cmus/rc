@@ -1,3 +1,4 @@
 set output_plugin=alsa
 set dsp.alsa.device=plughw:G10
 set replaygain=track
+set mouse=true
