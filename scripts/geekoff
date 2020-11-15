@@ -1,5 +1,5 @@
 #!/bin/bash
 # script for changing sound card 
-sed -i '4s/.*/    card PCH/' /home/kien/.asoundrc
-sed -i '9s/.*/    card PCH/' /home/kien/.asoundrc
-sed -i '2s/.*/set dsp.alsa.device=plughw:0,0/' /home/kien/.config/cmus/rc
+sed -i '4s/.*/    card PCH/' $HOME/.asoundrc
+sed -i '9s/.*/    card PCH/' $HOME/.asoundrc
+sed -i '2s/.*/set dsp.alsa.device=plughw:0,0/' $HOME/.config/cmus/rc
